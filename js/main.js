@@ -3,6 +3,23 @@ const COLS = 4;
 let game = new Game(ROWS, COLS);
 
 $(document).ready(function() {
+    $(".new-game").click(function() {
+        $(".card").removeClass(function (index, classNames) {
+            let current_classes = classNames.split(" "), // change the list into an array
+                classes_to_remove = []; // array of classes which are to be removed
+        
+            $.each(current_classes, function (index, class_name) {
+              // if the classname begins with bg add it to the classes_to_remove array
+              if (/img.*/.test(class_name)) {
+                classes_to_remove.push(class_name);
+              }
+            });
+            // turn the array back into a string
+            return classes_to_remove.join(" ");
+          });
+          $(".card").addClass("backcard-bg");
+        game = new Game(ROWS, COLS);
+    })
     $(".card").click(function(e) {
         let target = e.target;
 
@@ -26,15 +43,21 @@ $(document).ready(function() {
                     clickedSecond.toggleClass(imgClass); 
                     clickedFirst.toggleClass("backcard-bg");
                     clickedFirst.toggleClass(game.pairClicked[0].cardImg);
-                    game.toggleHidden(game.pairClicked[0].row, game.pairClicked[0].col);
-                    game.toggleHidden(game.pairClicked[1].row, game.pairClicked[1].col);
                     game.clickedCardsCount = 0;
                     game.pairClicked = [];
                 }, 1500);               
             } else {
+                game.toggleHidden(game.pairClicked[0].row, game.pairClicked[0].col);
+                game.toggleHidden(game.pairClicked[1].row, game.pairClicked[1].col);
                 game.clickedCardsCount = 0;
                 game.pairClicked = []; 
             }
         }
+
+        let didWin = game.checkIfWon(ROWS, COLS);
+
+        if (didWin) {
+            $("#myModal").modal();
+        }
     })
-})
+});

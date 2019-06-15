@@ -4,6 +4,7 @@ class Game {
         this.clickedCardsCount = 0; 
         this.pairClicked = []; //Used to track every pair of cards which are clicked one after the
                               //the other
+        this.cardsShown = 0;
     }
 
     showCardImg(x, y) {
@@ -14,7 +15,6 @@ class Game {
             img = currentCard.cardImg;
             this.clickedCardsCount++;
             this.pairClicked.push(currentCard);
-            this.board.board[x][y].hidden = false;
         }
 
         return img;
@@ -33,6 +33,18 @@ class Game {
     checkIfMatch(img1, img2) {
         if (img1 != img2) {
             return true;
+        } else {
+            this.cardsShown += 2;
         }
-    }    
+    }
+    
+    checkIfWon(rows, cols) {
+        if (this.cardsShown == rows * cols) {
+            return true;
+        }
+    }
+
+    newGame() {
+        return;
+    }
 }

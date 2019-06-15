@@ -11,7 +11,7 @@
     }    
 }
 
-.btn.btn-primary {
+.btn:not(.btn-default) {
     width: 50%;
     height: 50px;
 }
