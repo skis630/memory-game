@@ -1,0 +1,71 @@
+.board {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1000px) {
+    .board {
+        height: auto;
+    }    
+}
+
+.btn.btn-primary {
+    width: 50%;
+    height: 50px;
+}
+
+.card {
+    height: 140px;
+    width: 80%;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    margin: 20px;
+    border: outset;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.backcard-bg {
+    background-image: url('../images/backcard.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.img0 {
+    background-image: url('../images/ca1.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+}
+
+.img1 {
+    background-image: url('../images/ca2.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+}
+
+.img2 {
+    background-image: url('../images/ca3.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+}
+
+.img3 {
+    background-image: url('../images/ca4.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+}
+
+.img4 {
+    background-image: url('../images/ca5.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+}
+
+.img5 {
+    background-image: url('../images/ca6.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat; 
+}
