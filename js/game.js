@@ -43,8 +43,4 @@ class Game {
             return true;
         }
     }
-
-    newGame() {
-        return;
-    }
 }
