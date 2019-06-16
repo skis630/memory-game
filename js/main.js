@@ -9,7 +9,7 @@ $(document).ready(function() {
                 classes_to_remove = []; // array of classes which are to be removed
         
             $.each(current_classes, function (index, class_name) {
-              // if the classname begins with bg add it to the classes_to_remove array
+              // if the classname begins with img add it to the classes_to_remove array
               if (/img.*/.test(class_name)) {
                 classes_to_remove.push(class_name);
               }
@@ -28,12 +28,10 @@ $(document).ready(function() {
 
         let imgClass = game.showCardImg(x, y);
 
-        if (game.clickedCardsCount < 2) {
-             $(this).toggleClass("backcard-bg");
-             $(this).toggleClass(imgClass); 
-        } else if (game.clickedCardsCount == 2) {
-            $(this).toggleClass("backcard-bg");
-            $(this).toggleClass(imgClass); 
+        $(this).toggleClass("backcard-bg");
+        $(this).toggleClass(imgClass); 
+
+        if (game.clickedCardsCount == 2) {
             let noMatch = game.checkIfMatch(game.pairClicked[0].cardImg, game.pairClicked[1].cardImg);
             if (noMatch) {
                 setTimeout(function() {
@@ -45,7 +43,7 @@ $(document).ready(function() {
                     clickedFirst.toggleClass(game.pairClicked[0].cardImg);
                     game.clickedCardsCount = 0;
                     game.pairClicked = [];
-                }, 1500);               
+                }, 1000);               
             } else {
                 game.toggleHidden(game.pairClicked[0].row, game.pairClicked[0].col);
                 game.toggleHidden(game.pairClicked[1].row, game.pairClicked[1].col);
