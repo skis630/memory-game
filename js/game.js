@@ -5,17 +5,17 @@ class Game {
         this.pairClicked = []; //Used to track every pair of cards which are clicked one after the
                               //the other
         this.cardsShown = 0;
+        //this.clicked = false;
     }
 
     showCardImg(x, y) {
         let currentCard = this.board.board[x][y];
         let img = "";
 
-        if (currentCard.hidden) {
-            img = currentCard.cardImg;
-            this.clickedCardsCount++;
-            this.pairClicked.push(currentCard);
-        }
+        img = currentCard.cardImg;
+        this.clickedCardsCount++;
+        this.pairClicked.push(currentCard);
+        currentCard.hidden = false;       
 
         return img;
     }

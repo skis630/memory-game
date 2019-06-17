@@ -26,25 +26,34 @@ $(document).ready(function() {
         let x = target.getAttribute("x");
         let y = target.getAttribute("y");
 
-        let imgClass = game.showCardImg(x, y);
+        let imgClass = "";
+        if (game.board.board[x][y].hidden) {
+            imgClass = game.showCardImg(x, y);
+            $(this).toggleClass("backcard-bg");
+            $(this).toggleClass(imgClass); 
+        }
 
-        $(this).toggleClass("backcard-bg");
-        $(this).toggleClass(imgClass); 
-
+        
+        
         if (game.clickedCardsCount == 2) {
+            $(".card").css("pointer-events", "none");
             let noMatch = game.checkIfMatch(game.pairClicked[0].cardImg, game.pairClicked[1].cardImg);
             if (noMatch) {
                 setTimeout(function() {
                     let clickedFirst = $(`[x=${game.pairClicked[0].row}][y=${game.pairClicked[0].col}]`);
                     let clickedSecond = $(`[x=${game.pairClicked[1].row}][y=${game.pairClicked[1].col}]`);
+                    game.toggleHidden(game.pairClicked[0].row, game.pairClicked[0].col);
+                    game.toggleHidden(game.pairClicked[1].row, game.pairClicked[1].col);
                     clickedSecond.toggleClass("backcard-bg");
                     clickedSecond.toggleClass(imgClass); 
                     clickedFirst.toggleClass("backcard-bg");
                     clickedFirst.toggleClass(game.pairClicked[0].cardImg);
                     game.clickedCardsCount = 0;
                     game.pairClicked = [];
+                    $(".card").css("pointer-events", "auto");
                 }, 1000);               
             } else {
+                $(".card").css("pointer-events", "auto");
                 game.toggleHidden(game.pairClicked[0].row, game.pairClicked[0].col);
                 game.toggleHidden(game.pairClicked[1].row, game.pairClicked[1].col);
                 game.clickedCardsCount = 0;
@@ -57,5 +66,6 @@ $(document).ready(function() {
         if (didWin) {
             $("#myModal").modal();
         }
+
     })
 });

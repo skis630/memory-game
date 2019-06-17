@@ -28,6 +28,10 @@
     cursor: pointer;
 }
 
+.card:focus {
+    pointer-events: none;
+}
+
 .backcard-bg {
     background-image: url('../images/backcard.jpg');
     background-size: 100% 100%;
